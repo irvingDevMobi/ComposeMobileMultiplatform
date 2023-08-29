@@ -8,13 +8,7 @@ plugins {
 kotlin {
     targetHierarchy.default()
 
-    android {
-        compilations.all {
-            kotlinOptions {
-                jvmTarget = "1.8"
-            }
-        }
-    }
+    androidTarget { }
     
     listOf(
         iosX64(),
@@ -48,8 +42,15 @@ kotlin {
 
 android {
     namespace = "dev.irving.composemp"
-    compileSdk = 33
+    compileSdk = 34
     defaultConfig {
         minSdk = 26
+    }
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
+    }
+    kotlin {
+        jvmToolchain(11)
     }
 }
